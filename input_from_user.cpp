@@ -19,7 +19,7 @@ int main() {
         cout << "Your IP number is: "
              << num1 << "." << num2 << "." << num3 << "." << num4 << "." << endl;
     } else {
-        cout <, "Invalid input"
+        cout << "Invalid input" << endl;
     }
     return 0;
 }

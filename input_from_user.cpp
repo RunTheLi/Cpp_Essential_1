@@ -21,3 +21,5 @@ int main() {
 
     return 0;
 }
+
+// Enter four numbers for the IP address: 127 0 0 1

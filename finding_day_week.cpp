@@ -27,35 +27,40 @@ Congrats! A weekday number is ready for you! 0 – Sunday, 1 – Monday, ... and
 We want you to write a code which finds a weekday number for a date entered by a user. The program should ask the user for the year, month and day (in this order) and output a value indicating a weekday. */
 
 #include <iostream>
-
 using namespace std;
 
 int main() {
     int year, month, day;
 
-    cout << "Please enter year";
+    cout << "Please enter year: ";
     cin >> year;
-    cout << "please enter month";
+    cout << "Please enter month: ";
     cin >> month;
-    cout << "Please enter day";
+    cout << "Please enter day: ";
     cin >> day;
 
     if (year < 1901 || year > 2099 || month < 1 || month > 12 || day < 1 || day > 31) {
-        cout << "Invalid date input, please use valid 20th or 21th centuries date" << endl;
+        cout << "Invalid date input, please use a valid 20th or 21st century date." << endl;
         return 1;
-    } 
+    }
 
+    // Zeller’s congruence adjustment
     month -= 2;
     if (month <= 0) {
         month += 12;
         year -= 1;
     }
 
-    int weekday = ( month * 83) / 32;
+    int weekday = (month * 83) / 32;
     weekday += day;
     weekday += year;
     weekday += year / 4;
+    weekday -= year / 100;
+    weekday += year / 400;
+    weekday = weekday % 7; 
 
+    cout << "A week number is " << weekday << endl;
+    cout << "(0 = Sunday, 1 = Monday, ..., 6 = Saturday)" << endl;
 
     return 0;
 }

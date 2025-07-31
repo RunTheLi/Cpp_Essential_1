@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cmath>
+#include <cstdlib>
 #include <ctime>
 
 using namespace std;
@@ -15,39 +15,34 @@ int main(void) {
 	srand(time(NULL));
 
 	// Insert your code here
-    if (ballsno > maxball){
-        cout << "rror: Cannot draw more balls than available" << endl;
-        return 1;
-    }
-
-    int* draw = new int[ballsno];
+    int *draw = new int[ballsno];
     int count = 0;
 
-    while (count < ballsno){
+    for(int i = 0; i < ballsno; i++){
+
         int num = rand() % maxball + 1;
 
-        bool alreadyDrawn = false;
-        for (int i = 0; i < count; i++) {
-            if (drawn[i] == num) {
-                alreadyDrawn = true;
+        bool duplicate = false;
+        for(int j = 0; j < i; j++){
+            if(draw[j] == num){
+                duplicate = true;
                 break;
             }
         }
 
-        if (!alreadyDrawn) {
-            drawn[count++] = num;
+        if (duplicate){
+            i--;
+            continue;
         }
-    }
 
-    cout << "Drawn balls: ";
-    for (int i = 0; i < ballsno; i++) {
-        cout << drawn[i] << " ";
+        draw[i] = num;
+    }
+    cout << "Draw numbers: ";
+    for(int i = 0; i < ballsno; i++){
+        cout << draw[i] << " ";
     }
     cout << endl;
 
-    // Clean up
-    delete[] drawn;
-
-
+    delete[] draw;
 	return 0;
 }

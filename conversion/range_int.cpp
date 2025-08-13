@@ -9,13 +9,12 @@ int main(){
     cout << "Please Enter thr number: ";
     cin >> n;
 
-    for(int i = 1; i < n; i++){
-        if(n > i){
-            n = n + i;
-            i++;
-        }
+    long long sum = 0;
+
+    for(int i = 1; i <= n; i++){
+        sum += i;
     }
 
-    cout << n << endl;
+    cout << "Sum for " << n << " is " << sum << endl;
     return 0;
 }

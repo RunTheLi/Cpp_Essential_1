@@ -5,8 +5,7 @@ using namespace std;
 
 bool is_close(double a, double b, double tolerance){
   // Your code goes here
-
-  return false;
+    return fabs(a - b) < tolerance;
 }
 
 int main(void) {
